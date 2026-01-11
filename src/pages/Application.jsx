@@ -8,23 +8,25 @@ import a2 from "../assets/Our Approch/Property 1=Default (2).png";
 import a3 from "../assets/Our Approch/Property 1=Default (3).png";
 import a4 from "../assets/Our Approch/Property 1=Default (4).png";
 import a0 from "../assets/Our Approch/Property 1=Default.png";
-import c1 from "../assets/Our Project/Rectangle 161125071 (1).png";
-import c2 from "../assets/Our Project/Rectangle 161125071 (2).png";
-import c3 from "../assets/Our Project/Rectangle 161125071 (3).png";
-import c4 from "../assets/Our Project/Rectangle 161125071 (4).png";
-import c5 from "../assets/Our Project/Rectangle 161125071 (5).png";
+import agilis from "../assets/Our Project/Agilis.png";
+import bhajanMandhir from "../assets/Our Project/Bhajan mandhir.png";
+import careerminer from "../assets/Our Project/Careerminer.png";
+import estateVerse from "../assets/Our Project/EstateVerse.png";
+import growvia from "../assets/Our Project/Growvia.png";
+import zinnAI from "../assets/Our Project/ZINN AI.png";
 import hero from "../assets/Our Project/unsplash_sScmok4Iq1o.png";
 import Footer from "../components/Footer.jsx";
 import Navbar from "../components/Navbar.jsx";
 
 const items = [
-  { slug: "careerminer", title: "Careerminer", image: c1 },
-  { slug: "zinn-ai", title: "ZINN AI", image: c2 },
-  { slug: "agilis", title: "Agilis", image: c3 },
-  { slug: "bhajan-mandhir", title: "Bhajan Mandhir", image: c4 },
-  { slug: "estateverse", title: "EstateVerse", image: c5 },
-  { slug: "showcase", title: "Showcase", image: hero },
+  { slug: "careerminer", title: "Careerminer", image: careerminer },
+  { slug: "zinn-ai", title: "ZINN AI", image: zinnAI },
+  { slug: "agilis", title: "Agilis", image: agilis },
+  { slug: "bhajan-mandhir", title: "Bhajan Mandhir", image: bhajanMandhir },
+  { slug: "estateverse", title: "EstateVerse", image: estateVerse },
+  { slug: "growvia", title: "Growvia", image: growvia },
 ];
+
 
 function HorizontalScroller() {
   const ref = useRef(null);
@@ -123,49 +125,45 @@ export default function Application() {
               </h4>
               <div className="mt-3 flex items-center gap-3">
                 <Link to="/projects">
-                  <img
-                    src={c1}
-                    alt="Careerminer"
-                    className="w-12 h-12 rounded-full object-cover border border-white shadow"
-                  />
-                </Link>
-                <Link to="/projects">
-                  <img
-                    src={c2}
-                    alt="ZINN AI"
-                    className="w-12 h-12 rounded-full object-cover border border-white shadow"
-                  />
-                </Link>
-                <Link to="/projects">
-                  <img
-                    src={c3}
-                    alt="Agilis"
-                    className="w-12 h-12 rounded-full object-cover border border-white shadow"
-                  />
-                </Link>
-                <Link to="/projects">
-                  <img
-                    src={c4}
-                    alt="More"
-                    className="w-12 h-12 rounded-full object-cover border border-white shadow"
-                  />
-                </Link>
-                <Link to="/projects">
-                  <img
-                    src={c5}
-                    alt="More"
-                    className="w-12 h-12 rounded-full object-cover border border-white shadow"
-                  />
-                </Link>
-                <span className="ml-1 text-indigo-900 font-semibold">
-                  and more
-                </span>
-                <Link
-                  to="/projects"
-                  className="ml-2 inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-900 text-white"
-                >
-                  ➜
-                </Link>
+  <img
+    src={careerminer}
+    alt="Careerminer"
+    className="w-12 h-12 rounded-full object-cover border border-white shadow"
+  />
+</Link>
+
+<Link to="/projects">
+  <img
+    src={zinnAI}
+    alt="ZINN AI"
+    className="w-12 h-12 rounded-full object-cover border border-white shadow"
+  />
+</Link>
+
+<Link to="/projects">
+  <img
+    src={agilis}
+    alt="Agilis"
+    className="w-12 h-12 rounded-full object-cover border border-white shadow"
+  />
+</Link>
+
+<Link to="/projects">
+  <img
+    src={bhajanMandhir}
+    alt="Bhajan Mandhir"
+    className="w-12 h-12 rounded-full object-cover border border-white shadow"
+  />
+</Link>
+
+<Link to="/projects">
+  <img
+    src={estateVerse}
+    alt="EstateVerse"
+    className="w-12 h-12 rounded-full object-cover border border-white shadow"
+  />
+</Link>
+
               </div>
             </div>
           </div>
@@ -348,7 +346,7 @@ function ApproachSection() {
 
   return (
     <div>
-      <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900">
+      <h3 className="text-2xl md:text-3xl font-extrabold text-indigo-800">
         Our Approach
       </h3>
       <div className="mt-8 grid md:grid-cols-2 gap-12 items-center">

@@ -1,70 +1,103 @@
-import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import r1 from '../assets/Our Project/Rectangle 161125071 (1).png'
-import r2 from '../assets/Our Project/Rectangle 161125071 (2).png'
-import r3 from '../assets/Our Project/Rectangle 161125071 (3).png'
-import r4 from '../assets/Our Project/Rectangle 161125071 (4).png'
-import r5 from '../assets/Our Project/Rectangle 161125071 (5).png'
-import hero from '../assets/Our Project/unsplash_sScmok4Iq1o.png'
 import Navbar from '../components/Navbar.jsx'
 
+// Images
+import agilis from '../assets/Our Project/Agilis.png'
+import bhajan from '../assets/Our Project/Bhajan mandhir.png'
+import careerminer from '../assets/Our Project/Careerminer.png'
+import estateverse from '../assets/Our Project/EstateVerse.png'
+import growvia from '../assets/Our Project/Growvia.png'
+import zinnai from '../assets/Our Project/ZINN AI.png'
+import hero from '../assets/Our Project/unsplash_sScmok4Iq1o.png'
+
 const projects = [
-  { slug: 'careerminer', title: 'Careerminer', image: r1 },
-  { slug: 'zinn-ai', title: 'ZINN AI', image: r2 },
-  { slug: 'agilis', title: 'Agilis', image: r3 },
-  { slug: 'bhajan-mandhir', title: 'Bhajan Mandhir', image: r4 },
-  { slug: 'estateverse', title: 'EstateVerse', image: r5 },
-  { slug: 'showcase', title: 'Showcase', image: hero },
+  {
+    slug: 'careerminer',
+    title: 'Careerminer',
+    image: careerminer,
+    info: 'Smart job tracking and career growth platform.',
+  },
+  {
+    slug: 'zinn-ai',
+    title: 'ZINN AI',
+    image: zinnai,
+    info: 'AI-powered productivity and career assistant.',
+  },
+  {
+    slug: 'agilis',
+    title: 'Agilis',
+    image: agilis,
+    info: 'Global investment and business expansion platform.',
+  },
+  {
+    slug: 'bhajan-mandhir',
+    title: 'Bhajan Mandhir',
+    image: bhajan,
+    info: 'Spiritual platform for bhajans and devotion.',
+  },
+  {
+    slug: 'estateverse',
+    title: 'EstateVerse',
+    image: estateverse,
+    info: 'Modern real estate discovery & listing solution.',
+  },
+  {
+    slug: 'showcase',
+    title: 'Showcase',
+    image: hero,
+    info: 'Collection of our creative & technical work.',
+  },
 ]
 
 export default function Projects() {
-  const scrollerRef = useRef(null)
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      <main className="relative z-10 mx-auto max-w-6xl px-4 pb-24">
-        <section className="mt-12">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">Our Ongoing <span className="text-indigo-800">Projects</span></h2>
-          <p className="mt-2 text-gray-700">Scroll to see more projects.</p>
-          <div className="mt-6">
-            <div ref={scrollerRef} className="flex gap-6 overflow-x-auto pb-2">
-              {projects.map((p) => (
-                <Link key={p.slug} to={`/projects/${p.slug}`} className="shrink-0 w-64">
-                  <div className="rounded-2xl bg-white border border-indigo-100 shadow p-2">
-                    <img src={p.image} alt={p.title} className="h-40 w-full object-cover rounded-xl" />
-                  </div>
-                  <div className="mt-2 flex items-center justify-between">
-                    <span className="font-semibold text-indigo-900">{p.title}</span>
-                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-indigo-900 text-white">➜</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <div className="mt-4 flex gap-3">
-              <button onClick={() => scrollerRef.current?.scrollBy({ left: -600, behavior: 'smooth' })} className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-indigo-200 shadow">←</button>
-              <button onClick={() => scrollerRef.current?.scrollBy({ left: 600, behavior: 'smooth' })} className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-900 text-white shadow">→</button>
-            </div>
-          </div>
-        </section>
 
-        <section className="mt-12 text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">Our Projects</h2>
-          <p className="mt-2 text-gray-700">Click any project to view details. Images are stacked vertically.</p>
-        </section>
+      <main className="mx-auto max-w-6xl px-4 py-16">
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-10">
+          <span className="text-indigo-800">Our Projects</span>
+        </h2>
 
-        <section className="mt-8 space-y-8">
+        <div className="space-y-8">
           {projects.map((p) => (
-            <Link key={p.slug} to={`/projects/${p.slug}`} className="block">
-              <div className="rounded-3xl bg-white border border-indigo-100 shadow-md overflow-hidden">
-                <img src={p.image} alt={p.title} className="w-full h-64 md:h-96 object-cover" />
-                <div className="px-6 py-4 flex items-center justify-between">
-                  <span className="font-bold text-indigo-900 text-lg">{p.title}</span>
-                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-900 text-white">➜</span>
+            <Link
+              key={p.slug}
+              to={`/projects/${p.slug}`}
+              className="block group"
+            >
+              <div className="flex flex-col md:flex-row rounded-3xl overflow-hidden border border-indigo-100 shadow-md bg-white hover:shadow-xl transition">
+                
+                {/* LEFT – IMAGE */}
+                <div className="md:w-1/2 h-56 md:h-auto">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                  />
+                </div>
+
+                {/* RIGHT – CONTENT */}
+                <div className="md:w-1/2 p-8 flex flex-col justify-center">
+                  <h3 className="text-2xl font-extrabold text-indigo-900">
+                    {p.title}
+                  </h3>
+
+                  <p className="mt-3 text-gray-700 leading-relaxed">
+                    {p.info}
+                  </p>
+
+                  <span className="mt-6 inline-flex items-center gap-3 text-indigo-900 font-semibold">
+                    View Project
+                    <span className="w-8 h-8 rounded-full bg-indigo-900 text-white flex items-center justify-center">
+                      ➜
+                    </span>
+                  </span>
                 </div>
               </div>
             </Link>
           ))}
-        </section>
+        </div>
       </main>
     </div>
   )
