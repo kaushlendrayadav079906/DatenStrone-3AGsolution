@@ -1,416 +1,339 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { FiCode, FiLayers, FiSmartphone } from "react-icons/fi";
 import { Link } from "react-router-dom";
+
 import ca1 from "../assets/coustm Appplication/Property 1=Default (5).png";
 import ca2 from "../assets/coustm Appplication/Property 1=Variant2.png";
 import group69 from "../assets/Group/Group 69.png";
+
 import a1 from "../assets/Our Approch/Property 1=Default (1).png";
 import a2 from "../assets/Our Approch/Property 1=Default (2).png";
 import a3 from "../assets/Our Approch/Property 1=Default (3).png";
 import a4 from "../assets/Our Approch/Property 1=Default (4).png";
 import a0 from "../assets/Our Approch/Property 1=Default.png";
+
 import agilis from "../assets/Our Project/Agilis.png";
 import bhajanMandhir from "../assets/Our Project/Bhajan mandhir.png";
 import careerminer from "../assets/Our Project/Careerminer.png";
 import estateVerse from "../assets/Our Project/EstateVerse.png";
 import growvia from "../assets/Our Project/Growvia.png";
-import zinnAI from "../assets/Our Project/ZINN AI.png";
 import hero from "../assets/Our Project/unsplash_sScmok4Iq1o.png";
-import Footer from "../components/Footer.jsx";
-import Navbar from "../components/Navbar.jsx";
+import zinnAI from "../assets/Our Project/ZINN AI.png";
 
-const items = [
-  { slug: "careerminer", title: "Careerminer", image: careerminer },
-  { slug: "zinn-ai", title: "ZINN AI", image: zinnAI },
-  { slug: "agilis", title: "Agilis", image: agilis },
-  { slug: "bhajan-mandhir", title: "Bhajan Mandhir", image: bhajanMandhir },
-  { slug: "estateverse", title: "EstateVerse", image: estateVerse },
-  { slug: "growvia", title: "Growvia", image: growvia },
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+
+/* ---------------- DATA ---------------- */
+
+const projectImages = [
+  careerminer,
+  zinnAI,
+  agilis,
+  bhajanMandhir,
+  estateVerse,
+  growvia,
 ];
 
-
-function HorizontalScroller() {
-  const ref = useRef(null);
-  return (
-    <div className="mt-6">
-      <div ref={ref} className="flex gap-6 overflow-x-auto pb-2">
-        {items.map((p) => (
-          <Link key={p.slug} to="/projects" className="shrink-0 w-64">
-            <div className="rounded-2xl bg-white border border-indigo-100 shadow p-2">
-              <img
-                src={p.image}
-                alt={p.title}
-                className="h-40 w-full object-cover rounded-xl"
-              />
-            </div>
-            <div className="mt-2 flex items-center justify-between">
-              <span className="font-semibold text-indigo-900">{p.title}</span>
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-indigo-900 text-white">
-                ➜
-              </span>
-            </div>
-          </Link>
-        ))}
-      </div>
-      <div className="mt-4 flex gap-3">
-        <button
-          onClick={() =>
-            ref.current?.scrollBy({ left: -600, behavior: "smooth" })
-          }
-          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-indigo-200 shadow"
-        >
-          ←
-        </button>
-        <button
-          onClick={() =>
-            ref.current?.scrollBy({ left: 600, behavior: "smooth" })
-          }
-          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-900 text-white shadow"
-        >
-          →
-        </button>
-      </div>
-    </div>
-  );
-}
-
-// VerticalProjects removed; shown on separate Projects page
+const approachItems = [
+  { title: "Startup-Centric", image: a0 },
+  { title: "Tailored Solutions", image: a1 },
+  { title: "Agile & Secure", image: a2 },
+  { title: "Comprehensive Support", image: a3 },
+  { title: "Expert Team", image: a4 },
+];
 
 export default function Application() {
-  const customAppImages = [ca1, ca2];
-  const [customIndex, setCustomIndex] = useState(0);
-  const toggleCustomImage = () =>
-    setCustomIndex((customIndex + 1) % customAppImages.length);
+  const [womanIndex, setWomanIndex] = useState(0);
+  const [approachIndex, setApproachIndex] = useState(0);
+
+  const womanImages = [ca1, ca2];
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white min-h-screen">
       <Navbar />
-      <div id="apps" className="mx-auto max-w-6xl px-4">
-        <section className="text-center mt-16">
-          <h2 className="text-3xl md:text-5xl font-extrabold leading-tight">
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Custom Applications That Drive Growth and Efficiency
-            </span>
-          </h2>
 
-          <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-black leading-relaxed">
-            From MVPs for startups to scalable applications for SMEs, we craft
-            solutions that turn ideas into digital products that work.
-          </p>
+      <div className="max-w-6xl mx-auto px-4">
 
-          <div className="mt-6">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-indigo-700 text-white px-6 py-2 font-semibold shadow-md hover:bg-indigo-600"
-            >
-              Start Your Project
-              <span aria-hidden>➜</span>
-            </a>
-          </div>
-        </section>
-        <section className="mt-16">
-          <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900">
-            <span className="text-indigo-800">Our Ongoing Projects</span>
-          </h3>
+        {/* HERO */}
+        <section className="mt-16 text-center">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-[#0b0f5c]">
+            Custom Applications <span className="text-[#7b7fae]">That Drive Growth</span>
+            <br />and Efficiency
+          </h1>
         </section>
 
-        <section className="mt-10">
-          <div className="relative rounded-3xl overflow-hidden">
-            <img
-              src={hero}
-              alt="Our projects"
-              className="h-56 md:h-80 w-full object-cover"
-            />
-            <div className="absolute left-4 top-4 md:left-6 md:top-6">
-              <h4 className="text-indigo-900 font-extrabold text-xl md:text-2xl">
-                Our projects
-              </h4>
-              <div className="mt-3 flex items-center gap-3">
-                <Link to="/projects">
-  <img
-    src={careerminer}
-    alt="Careerminer"
-    className="w-12 h-12 rounded-full object-cover border border-white shadow"
-  />
-</Link>
+        {/* OUR PROJECTS */}
+        <section className="mt-12 flex justify-center">
+          <div className="relative w-full max-w-[1050px] h-[320px] rounded-[22px] overflow-hidden shadow-md">
+            <img src={hero} className="absolute inset-0 w-full h-full object-cover" />
 
-<Link to="/projects">
-  <img
-    src={zinnAI}
-    alt="ZINN AI"
-    className="w-12 h-12 rounded-full object-cover border border-white shadow"
-  />
-</Link>
+            <div className="absolute inset-0 flex items-center px-10">
+              <div>
+                <h3 className="text-[#0b0f5c] font-bold text-xl mb-4">Our projects</h3>
 
-<Link to="/projects">
-  <img
-    src={agilis}
-    alt="Agilis"
-    className="w-12 h-12 rounded-full object-cover border border-white shadow"
-  />
-</Link>
+                <div className="flex items-center gap-4">
+                  <div className="flex -space-x-3">
+                    {projectImages.map((img, i) => (
+                      <Link
+                        key={i}
+                        to="/projects"
+                        className="w-11 h-11 rounded-full bg-white border-2 border-white shadow overflow-hidden hover:scale-110 transition"
+                      >
+                        <img src={img} className="w-full h-full object-cover" />
+                      </Link>
+                    ))}
+                  </div>
 
-<Link to="/projects">
-  <img
-    src={bhajanMandhir}
-    alt="Bhajan Mandhir"
-    className="w-12 h-12 rounded-full object-cover border border-white shadow"
-  />
-</Link>
+                  <span className="text-sm text-gray-700 ml-2">and more</span>
 
-<Link to="/projects">
-  <img
-    src={estateVerse}
-    alt="EstateVerse"
-    className="w-12 h-12 rounded-full object-cover border border-white shadow"
-  />
-</Link>
-
+                  <Link
+                    to="/projects"
+                    className="ml-3 w-10 h-10 rounded-full bg-[#e9ecff] flex items-center justify-center text-[#0b0f5c] hover:bg-[#0b0f5c] hover:text-white transition"
+                  >
+                    →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </section>
-        <section className="mt-14">
-          <h4 className="text-indigo-900 font-extrabold text-xl md:text-2xl">
-            Scroll to see more projects
-          </h4>
 
-          <HorizontalScroller />
-        </section>
-        <section className="mt-14 grid md:grid-cols-2 gap-8 items-center">
+        {/* WHY CUSTOM */}
+        <section className="mt-14 grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <h3 className="text-2xl md:text-3xl font-extrabold text-indigo-800">
-              Why Your Business Neesd a Custom Appliction{" "}
-              <span className="text-indigo-700">Custom Application</span>
-            </h3>
-            <p className="mt-3 text-gray-700">
-              Inefficient tools create bottlenecks. We ensure your application
-              becomes a foundation for efficiency, innovation, and measurable
-              impact.
+            <h2 className="text-3xl font-bold text-[#0b0f5c]">
+              Why Your Business <span className="text-[#8a8fb5]">Needs</span>
+              <br />a Custom Application
+            </h2>
+
+            <p className="mt-4 text-gray-600">
+              Inefficient tools or generic software often create operational bottlenecks.
             </p>
-            <div className="mt-6 rounded-2xl bg-white/70 border border-white/60 shadow-md p-5">
+
+            <div className="mt-6 bg-[#f5f6fa] rounded-2xl p-6 shadow">
+              <p className="font-semibold text-[#0b0f5c] mb-4">
+                Custom applications can transform the way your startup or SME operates:
+              </p>
               <ul className="space-y-3 text-gray-800">
-                <li>• Streamline operations and automate workflows</li>
-                <li>• Deliver unique experiences to your clients</li>
-                <li>
-                  • Support long-term growth with scalable, flexible solutions
-                </li>
+                <li>Streamline operations and automate workflows</li>
+                <li>Deliver unique services or experiences</li>
+                <li>Support long-term growth</li>
               </ul>
             </div>
           </div>
+
           <div className="rounded-[3rem] overflow-hidden bg-white">
-            <button onClick={toggleCustomImage} className="block w-full">
-              <img
-                src={customAppImages[customIndex]}
-                alt="Custom Application"
-                className="w-full h-72 md:h-[28rem] object-contain"
-              />
-            </button>
+            <img
+              src={womanImages[womanIndex]}
+              className="w-full h-72 md:h-[28rem] object-contain grayscale cursor-pointer"
+              onClick={() => setWomanIndex((p) => (p + 1) % womanImages.length)}
+            />
           </div>
         </section>
 
-        <section className="mt-16">
-          <h3 className="text-center text-2xl md:text-3xl font-extrabold text-indigo-800">
-            Our Application Development Services
-          </h3>
+        {/* SERVICES */}
+        <section className="mt-28 text-center relative">
+          <div className="absolute inset-0 bg-[linear-gradient(#eef0fb_1px,transparent_1px),linear-gradient(90deg,#eef0fb_1px,transparent_1px)] bg-[size:28px_28px] opacity-40 pointer-events-none" />
 
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Custom Software Development",
-                desc: "Tailored solutions for automating tasks, improving workflows, and delivering unique functionality.",
-              },
-              {
-                title: "Mobile App Development",
-                desc: "High-performance, user-friendly apps that engage your audience wherever they are.",
-              },
-              {
-                title: "Cross-Platform Solutions",
-                desc: "Applications that work seamlessly across devices and platforms, maximizing reach and usability.",
-              },
-            ].map((card, i) => (
-              <div
-                key={i}
-                className="rounded-2xl p-6 text-white bg-gradient-to-br from-indigo-700 to-purple-700 shadow-lg"
-              >
-                <h4 className="font-bold text-lg">{card.title}</h4>
-                <p className="mt-2 text-sm text-white/90">{card.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+          <div className="relative">
+            <h2 className="text-3xl font-extrabold text-[#0b0f5c]">
+              Our Application <br />
+              Development <span className="text-[#9aa0c9]">Services</span>
+            </h2>
 
-        <section className="mt-16">
-          <ApproachSection />
-        </section>
+            <div className="mt-12 grid md:grid-cols-3 gap-10 justify-items-center">
+              <ServiceDarkCard icon={FiCode} title="Custom Software Development" />
+              <ServiceLightCard />
+              <ServiceDarkCard icon={FiLayers} title="Cross-Platform Solutions" />
+            </div>
 
-        <section id="contact" className="mt-16">
-          <h3 className="text-center text-2xl md:text-3xl font-extrabold">
-            <span className="text-indigo-700">
-              Ready to Build Your Application ?
-            </span>
-          </h3>
-          <p className="text-center mt-2 text-gray-700">
-            Let us create a digital solution that boosts efficiency and growth.
-          </p>
-          <div className="mt-8 rounded-3xl border-2 border-indigo-500 p-2 md:p-3">
-            <div className="grid md:grid-cols-2 gap-2 md:gap-3 items-stretch">
-              <form className="rounded-2xl bg-white/80 border border-indigo-300 shadow-lg p-4 md:p-6 h-full">
-                <div className="grid gap-4">
-                  <input
-                    className="rounded-lg border border-indigo-300 px-3 py-2 outline-none"
-                    placeholder="Name*"
-                  />
-                  <input
-                    className="rounded-lg border border-indigo-300 px-3 py-2 outline-none"
-                    placeholder="Email*"
-                  />
-                  <input
-                    className="rounded-lg border border-indigo-300 px-3 py-2 outline-none"
-                    placeholder="Phone Number"
-                  />
-                  <input
-                    className="rounded-lg border border-indigo-300 px-3 py-2 outline-none"
-                    placeholder="Startup Name (optional)"
-                  />
-                  <textarea
-                    className="rounded-lg border border-indigo-300 px-3 py-2 outline-none min-h-24"
-                    placeholder="Message"
-                  />
-                </div>
-                <button
-                  type="button"
-                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-indigo-700 text-white px-6 py-2 font-semibold shadow-md hover:bg-indigo-600"
-                >
-                  Send Message <span aria-hidden>➜</span>
-                </button>
-              </form>
-              <div className="rounded-2xl overflow-hidden h-full border border-indigo-300">
-                <img
-                  src={group69}
-                  alt="Contact side"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            <div className="mt-10 flex justify-center gap-4">
+              <ArrowBtn>←</ArrowBtn>
+              <ArrowBtn>→</ArrowBtn>
             </div>
           </div>
         </section>
+
+        {/* OUR APPROACH (EXACT UI) */}
+        <ApproachSection
+          approachItems={approachItems}
+          index={approachIndex}
+          setIndex={setApproachIndex}
+        />
+
+        {/* CONTACT */}
+        <ContactSection />
+
       </div>
+
       <Footer />
     </div>
   );
 }
 
-const approachItems = [
-  {
-    title: "Startup-Centric",
-    image: a0,
-    desc: "Respect budget and timelines; no quality trade-offs.",
-    accentText: "text-indigo-600",
-    badgeBg: "bg-indigo-600",
-  },
-  {
-    title: "Tailored Solutions",
-    image: a1,
-    desc: "Customized solutions aligned to business goals.",
-    accentText: "text-sky-600",
-    badgeBg: "bg-sky-600",
-  },
-  {
-    title: "Agile & Secure",
-    image: a2,
-    desc: "Agile delivery with robust security measures.",
-    accentText: "text-emerald-600",
-    badgeBg: "bg-emerald-600",
-  },
-  {
-    title: "Comprehensive Support",
-    image: a3,
-    desc: "Partner from ideation to launch and beyond.",
-    accentText: "text-fuchsia-600",
-    badgeBg: "bg-fuchsia-600",
-  },
-  {
-    title: "Expert Team",
-    image: a4,
-    desc: "Experienced team, scalable products, real impact.",
-    accentText: "text-orange-600",
-    badgeBg: "bg-orange-600",
-  },
-];
+/* ---------------- UI COMPONENTS ---------------- */
 
-function ApproachSection() {
-  const [i, setI] = useState(0);
-  const next = () => setI((i + 1) % approachItems.length);
+function ArrowBtn({ children }) {
+  return (
+    <button className="w-10 h-10 rounded-full bg-[#eef1fb] text-[#0b0f5c] text-lg shadow">
+      {children}
+    </button>
+  );
+}
+
+function ServiceDarkCard({ icon: Icon, title }) {
+  return (
+    <div className="w-[300px] h-[270px] rounded-2xl p-6 text-white relative bg-gradient-to-b from-[#9aa0c9] to-[#1a1f7a]">
+      <div className="absolute top-5 right-5 w-10 h-10 bg-white/25 rounded-lg flex items-center justify-center">
+        <Icon size={18} />
+      </div>
+      <h3 className="mt-12 font-bold text-lg">{title}</h3>
+      <p className="mt-3 text-sm text-white/90">
+        Tailored solutions for automating tasks, improving workflows, or delivering unique business functionality.
+      </p>
+    </div>
+  );
+}
+
+function ServiceLightCard() {
+  return (
+    <div className="w-[300px] h-[270px] rounded-2xl p-6 bg-[#dde3f5] relative">
+      <div className="absolute top-5 right-5 w-10 h-10 bg-[#cfd7ef] rounded-lg flex items-center justify-center">
+        <FiSmartphone size={18} className="text-[#0b0f5c]" />
+      </div>
+      <h3 className="mt-12 font-bold text-lg text-[#0b0f5c]">Mobile App Development</h3>
+      <p className="mt-3 text-sm text-gray-600">
+        High-performance apps for iOS and Android designed to engage users.
+      </p>
+    </div>
+  );
+}
+
+/* ---------------- OUR APPROACH (EXACT MATCH) ---------------- */
+
+function ApproachSection({ approachItems, index, setIndex }) {
   const prev = () =>
-    setI((i - 1 + approachItems.length) % approachItems.length);
-  const active = approachItems[i];
+    setIndex((index - 1 + approachItems.length) % approachItems.length);
+  const next = () =>
+    setIndex((index + 1) % approachItems.length);
 
   return (
-    <div>
-      <h3 className="text-2xl md:text-3xl font-extrabold text-indigo-800">
-        Our Approach
-      </h3>
-      <div className="mt-8 grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-4">
-          {approachItems.map((item, idx) => (
-            <button
-              key={item.title}
-              onClick={() => setI(idx)}
-              className={`inline-flex items-center rounded-full px-4 py-2 font-semibold transition-all ${
-                idx === i
-                  ? `${item.badgeBg} text-white shadow-md scale-105`
-                  : "bg-gray-100 text-gray-400"
-              }`}
+    <section className="mt-20 md:mt-28 mb-20 relative">
+      <h2 className="text-4xl font-extrabold text-[#0b0f5c] mb-12">Our Approach</h2>
+
+      <div className="grid md:grid-cols-2 gap-0 items-center">
+        
+        {/* Left Column: List (Right Aligned) + Arrows (Left Aligned) */}
+        <div className="flex flex-col h-full justify-center relative z-20 pr-10 md:pr-16"> 
+          
+          {/* Text items: Gap maintained */}
+          <div className="space-y-6 flex flex-col items-end text-right">
+            {approachItems.map((item, i) => (
+              <h3
+                key={i}
+                onClick={() => setIndex(i)}
+                className={`cursor-pointer transition-all duration-300 font-bold select-none whitespace-nowrap ${
+                    i === index 
+                    ? "text-3xl md:text-4xl text-black opacity-100" 
+                    : "text-xl md:text-2xl text-gray-300 opacity-40 hover:opacity-75"
+                }`}
+              >
+                {item.title}
+              </h3>
+            ))}
+          </div>
+
+          {/* Arrows */}
+          <div className="flex gap-4 self-start mt-10 md:mt-16">
+            <button 
+                onClick={prev} 
+                className="w-12 h-12 rounded-full bg-[#EBF0FF] flex items-center justify-center text-[#0b0f5c] hover:bg-[#dce3fc] transition shadow-sm z-30"
             >
-              {item.title}
+                <span className="text-xl mb-1">←</span>
             </button>
-          ))}
+            <button 
+                onClick={next} 
+                className="w-12 h-12 rounded-full bg-[#EBF0FF] flex items-center justify-center text-[#0b0f5c] hover:bg-[#dce3fc] transition shadow-sm z-30"
+            >
+                <span className="text-xl mb-1">→</span>
+            </button>
+          </div>
         </div>
-        <div className="flex flex-col items-center">
-          <div className="relative w-64 h-64 md:w-[27rem] md:h-[27rem] rounded-full border border-gray-300 flex items-center justify-center shadow-sm">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-56 h-56 md:w-[24rem] md:h-[24rem] rounded-full border border-gray-200"></div>
-            </div>
-            <button
-              onClick={() => setI((i + 1) % approachItems.length)}
-              className="relative rounded-full overflow-hidden w-60 h-60 md:w-[25rem] md:h-[25rem]"
-            >
-              <img
-                src={active.image}
-                alt={active.title}
-                className="w-full h-full object-cover md:scale-110"
-              />
-            </button>
-            <div className="absolute inset-0 rounded-full flex items-center justify-center">
-              <div className="absolute inset-0 rounded-full bg-white/50" />
-              <div className="relative z-10 px-8 text-center">
-                <div className="text-xl md:text-2xl font-extrabold text-black">
-                  {active.title}
-                </div>
-                <div className="mt-2 text-black text-sm md:text-base">
-                  {active.desc}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-4 font-bold text-black text-xl">
-            {active.title}
-          </div>
-          <div className="mt-6 flex gap-3">
-            <button
-              onClick={prev}
-              className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-indigo-200 shadow"
-            >
-              ←
-            </button>
-            <button
-              onClick={next}
-              className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-900 text-white shadow"
-            >
-              →
-            </button>
-          </div>
+
+        {/* Right Column: Circular Image */}
+        <div className="flex justify-start items-center relative z-10 pointer-events-none md:pointer-events-auto pl-0">
+             {/* Outer Circle: RESTORED thin dark border */}
+             
+                
+                   <img
+                    src={approachItems[index].image}
+                    className="w-full h-full object-cover transition-opacity duration-500"
+                    alt="Approach Visual"
+                  />
+               
+           
         </div>
       </div>
-    </div>
+    </section>
+  );
+}
+
+/* ---------------- CONTACT SECTION ---------------- */
+
+function ContactSection() {
+  return (
+    <section id="contact" className="mt-32 mb-20 text-center">
+      <h2 className="text-3xl md:text-5xl font-extrabold text-[#0b0f5c]">
+        Ready to Build Your <br /> Application?
+      </h2>
+
+      <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+        Let us create a digital solution that boosts efficiency, engages users, and accelerates growth for your startup or SME.
+      </p>
+
+      {/* Main Card */}
+      <div className="mt-12 bg-white rounded-2xl border border-[#9aa0c9] shadow-lg overflow-hidden flex flex-col md:flex-row p-2 md:p-0">
+        
+        {/* Left: Form */}
+        <div className="flex-1 p-8 md:p-12 text-left">
+            <form className="space-y-5">
+                <div>
+                    <label className="block text-[#0b0f5c] font-bold mb-2">Name*</label>
+                    <input type="text" className="w-full h-12 rounded-xl border border-[#9aa0c9] px-4 outline-none focus:border-[#0b0f5c] transition bg-white" />
+                </div>
+                <div>
+                    <label className="block text-[#0b0f5c] font-bold mb-2">Email*</label>
+                    <input type="email" className="w-full h-12 rounded-xl border border-[#9aa0c9] px-4 outline-none focus:border-[#0b0f5c] transition bg-white" />
+                </div>
+                <div>
+                    <label className="block text-[#0b0f5c] font-bold mb-2">Phone Number</label>
+                    <input type="tel" className="w-full h-12 rounded-xl border border-[#9aa0c9] px-4 outline-none focus:border-[#0b0f5c] transition bg-white" />
+                </div>
+                <div>
+                    <label className="block text-[#0b0f5c] font-bold mb-2">Startup Name (optional)</label>
+                    <input type="text" className="w-full h-12 rounded-xl border border-[#9aa0c9] px-4 outline-none focus:border-[#0b0f5c] transition bg-white" />
+                </div>
+                <div>
+                    <label className="block text-[#0b0f5c] font-bold mb-2">Message</label>
+                    <textarea className="w-full h-32 rounded-xl border border-[#9aa0c9] p-4 outline-none focus:border-[#0b0f5c] transition resize-none bg-white" />
+                </div>
+
+                <div className="flex justify-center md:justify-start pt-2">
+                    <button className="flex items-center gap-3 px-6 py-3 rounded-full border border-[#0b0f5c] text-[#0b0f5c] font-bold hover:bg-[#0b0f5c] hover:text-white transition group">
+                        Send Message
+                        <div className="w-6 h-6 rounded-full bg-[#0b0f5c] flex items-center justify-center group-hover:bg-white text-white group-hover:text-[#0b0f5c]">
+                            <span className="text-sm">→</span>
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        {/* Right: Image */}
+        <div className="hidden md:block w-[45%] relative">
+             <img src={group69} className="absolute inset-0 w-full h-full object-cover" alt="Contact Visual" />
+        </div>
+      </div>
+    </section>
   );
 }
